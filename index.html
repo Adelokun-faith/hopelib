@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sidebar Menu</title>
+    <title>Hopeful Library</title>
     <link rel="stylesheet" href="ss.css">
 </head>
 <body>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Hamburger Icon -->
     <div class="hamburger" id="hamburger">
@@ -16,9 +17,26 @@
 
     <!-- Sidebar Menu -->
     <nav class="sidebar" id="sidebar">
-      <a href="#">Home</a>
       <div class="books-menu">
-        <button id="booksToggle" class="books-toggle" aria-expanded="false">Personal Books ▾</button>
+        <button id="booksToggle" class="books-toggle" aria-expanded="false">Financial Books ▾</button>
+        <ul class="books-categories">
+          <li class="category-item" data-category="Leadership">
+            <button class="category-toggle">Leadership ▾</button>
+            <ul class="category-books" hidden></ul>
+          </li>
+          <li class="category-item" data-category="Health">
+            <button class="category-toggle">Health ▾</button>
+            <ul class="category-books" hidden></ul>
+          </li>
+          <li class="category-item" data-category="Spirituality">
+            <button class="category-toggle">Spirituality ▾</button>
+            <ul class="category-books" hidden></ul>
+          </li>
+          <li class="category-item" data-category="Time Management">
+            <button class="category-toggle">Time Management ▾</button>
+            <ul class="category-books" hidden></ul>
+          </li>
+        </ul>
         <ul id="booksList" class="books-list" hidden>
           <!-- Populated by script.js -->
         </ul>
@@ -33,7 +51,7 @@
 
         <!-- Landing page -->
     <div class="container">
-        <h1>HOPEFUL BOOK STORE</h1>
+        <h1>HOPEFUL BOOK <br> STORE</h1>
         <p>Download your books here!</p>
         <img src="img/lady.jpg" alt="error">
 
@@ -59,7 +77,10 @@
         <h2 id="modalTitle">Book Title</h2>
         <div class="modal-body">
           <img id="modalCover" src="img/lady.jpg" alt="cover" />
-          <p id="modalDesc">Description will appear here.</p>
+          <div class="modal-text">
+            <p id="modalDesc">Description will appear here.</p>
+            <a id="modalPdf" class="modal-pdf" href="#" target="_blank" rel="noopener" hidden>Read / Download PDF</a>
+          </div>
         </div>
       </div>
     </div>
