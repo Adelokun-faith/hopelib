@@ -30,31 +30,11 @@ hamburger.addEventListener("click", () => {
 
 // --- Searchable books dropdown ---
 const books = [
-  'The Alchemist',
-  'To Kill a Mockingbird',
-  '1984',
-  'Pride and Prejudice',
-  'Moby Dick',
-  'The Hobbit',
-  'The Great Gatsby',
-  'Brave New World',
-  'Siddhartha',
-  'The Catcher in the Rye',
   'Rich Dad Poor Dad'
 ];
 
-// Optional detailed data for books (title used as key)
+// Minimal data for the single book
 const booksData = {
-  'The Alchemist': {desc: 'A fable about following your dream.'},
-  'To Kill a Mockingbird': {desc: 'A novel about racial injustice in the Deep South.'},
-  '1984': {desc: 'Dystopian novel about surveillance and totalitarianism.'},
-  'Pride and Prejudice': {desc: 'A classic romance and social commentary.'},
-  'Moby Dick': {desc: 'The epic tale of obsession and the sea.'},
-  'The Hobbit': {desc: 'A fantasy adventure preceding The Lord of the Rings.'},
-  'The Great Gatsby': {desc: 'A story of wealth, love, and the American Dream.'},
-  'Brave New World': {desc: 'A dystopia exploring technology and control.'},
-  'Siddhartha': {desc: 'A spiritual journey during the time of the Buddha.'},
-  'The Catcher in the Rye': {desc: 'A teenaged narrator navigating alienation.'},
   'Rich Dad Poor Dad': {desc: 'Personal finance lessons contrasting two approaches to money.'}
 };
 
@@ -90,6 +70,15 @@ function showBook(title) {
   const info = booksData[title] || {desc: 'No description available.'};
   modalDesc.textContent = info.desc;
   // Optionally set a cover if we had one; keeping default for now
+  // If a PDF exists for this book, expose link in the modal
+  const modalPdf = document.getElementById('modalPdf');
+  if (modalPdf) {
+    // use a URL-safe filename for the PDF
+    const pdfFile = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') + '.pdf';
+    const pdfPath = `books/${pdfFile}`;
+    modalPdf.href = encodeURI(pdfPath);
+    modalPdf.hidden = false;
+  }
   modal.hidden = false;
 }
 
