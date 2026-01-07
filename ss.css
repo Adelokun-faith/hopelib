@@ -117,22 +117,27 @@ html, body {
 
 /* Landing page container - now with fluid margin on large screens */
 .container {
+    position: relative;      /* change from absolute */
+    min-height: 100vh;       /* always fill viewport */
     overflow: hidden;
-    position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
 }
 
-.container img{
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    position: absolute;
-    z-index: -1;
-    object-fit: cover;
+.container img {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  object-fit: cover;       /* keeps image proportional */
+  object-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
+
 
 /* Consolidated .container h1 above */
 
@@ -261,6 +266,7 @@ html, body {
 
 /* Ensure hero image covers smaller screens properly */
 .container img{ object-position: center center; }
+
 
 
 /* Fluid hero paragraph and responsive search sizing */
@@ -602,5 +608,21 @@ html, body {
 @media (max-width: 600px) {
   .bigger-list {
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    min-height: 100svh; /* better mobile viewport handling */
+  }
+
+  .container img {
+    min-height: 100svh;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container {
+    min-height: 90vh;
   }
 }
