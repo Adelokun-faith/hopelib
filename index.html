@@ -1,90 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Hopeful Library</title>
-    <link rel="stylesheet" href="ss.css">
+  <meta charset="UTF-8">
+  <title>Hopeful Library</title>
+  <link rel="stylesheet" href="ss.css">
 </head>
+
 <body>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Hamburger Icon -->
-    <div class="hamburger" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
+  <!-- Hamburger Icon -->
+  <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- Sidebar Menu -->
+  <nav class="sidebar" id="sidebar">
+    <div class="books-menu">
+      <button id="booksToggle" class="books-toggle" aria-expanded="false">Financial Books ▾</button>
+      <ul class="books-categories">
+        <li class="category-item" data-category="Leadership">
+          <button class="category-toggle">Leadership ▾</button>
+          <ul class="category-books" hidden></ul>
+        </li>
+        <li class="category-item" data-category="Health">
+          <button class="category-toggle">Health ▾</button>
+          <ul class="category-books" hidden></ul>
+        </li>
+        <li class="category-item" data-category="Spirituality">
+          <button class="category-toggle">Spirituality ▾</button>
+          <ul class="category-books" hidden></ul>
+        </li>
+        <li class="category-item" data-category="Time Management">
+          <button class="category-toggle">Time Management ▾</button>
+          <ul class="category-books" hidden></ul>
+        </li>
+      </ul>
+      <ul id="booksList" class="books-list" hidden>
+        <!-- Populated by script.js -->
+      </ul>
+    </div>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </nav>
+
+
+  <!-- Page Content -->
+
+
+  <!-- Landing page -->
+  <div class="container">
+    <h1>HOPEFUL BOOK <br> STORE</h1>
+    <p>Download your books here!</p>
+    <img src="img/lady.jpg" alt="error">
+
+    <div class="search-wrapper">
+      <form id="searchForm" class="search-container">
+        <input type="text" id="searchInput" placeholder="Search books..." />
+        <button type="submit" aria-label="Search">
+          <svg viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+      </form>
     </div>
 
-    <!-- Sidebar Menu -->
-    <nav class="sidebar" id="sidebar">
-      <div class="books-menu">
-        <button id="booksToggle" class="books-toggle" aria-expanded="false">Financial Books ▾</button>
-        <ul class="books-categories">
-          <li class="category-item" data-category="Leadership">
-            <button class="category-toggle">Leadership ▾</button>
-            <ul class="category-books" hidden></ul>
-          </li>
-          <li class="category-item" data-category="Health">
-            <button class="category-toggle">Health ▾</button>
-            <ul class="category-books" hidden></ul>
-          </li>
-          <li class="category-item" data-category="Spirituality">
-            <button class="category-toggle">Spirituality ▾</button>
-            <ul class="category-books" hidden></ul>
-          </li>
-          <li class="category-item" data-category="Time Management">
-            <button class="category-toggle">Time Management ▾</button>
-            <ul class="category-books" hidden></ul>
-          </li>
-        </ul>
-        <ul id="booksList" class="books-list" hidden>
-          <!-- Populated by script.js -->
-        </ul>
-      </div>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
-    </nav>
 
-    
-<!-- Page Content -->
+  </div>
 
-
-        <!-- Landing page -->
-    <div class="container">
-        <h1>HOPEFUL BOOK <br> STORE</h1>
-        <p>Download your books here!</p>
-        <img src="img/lady.jpg" alt="error">
-
-  <div class="search-wrapper">
-  <form id="searchForm" class="search-container">
-    <input type="text" id="searchInput" placeholder="Search books..." />
-    <button type="submit" aria-label="Search">
-      <svg viewBox="0 0 24 24">
-        <circle cx="11" cy="11" r="8"></circle>
-        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-      </svg>
-    </button>
-  </form>
-</div>
-
-
-    </div>
-    
-    <!-- Book detail modal -->
-    <div id="bookModal" class="modal" hidden>
-      <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-        <button class="modal-close" id="modalClose" aria-label="Close">×</button>
-        <h2 id="modalTitle">Book Title</h2>
-        <div class="modal-body">
-          <img id="modalCover" src="img/lady.jpg" alt="cover" />
-          <div class="modal-text">
-            <p id="modalDesc">Description will appear here.</p>
-            <a id="modalPdf" class="modal-pdf" href="#" target="_blank" rel="noopener" hidden>Read / Download PDF</a>
-          </div>
+  <!-- Book detail modal -->
+  <div id="bookModal" class="modal" hidden>
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalClose" aria-label="Close">×</button>
+      <h2 id="modalTitle">Book Title</h2>
+      <div class="modal-body">
+        <img id="modalCover" src="img/lady.jpg" alt="cover" />
+        <div class="modal-text">
+          <p id="modalDesc">Description will appear here.</p>
+          <a id="modalPdf" class="modal-pdf" href="#" target="_blank" rel="noopener" hidden>Read / Download PDF</a>
         </div>
       </div>
     </div>
+  </div>
 
-    <script src="script.js"></script>
+  <!-- Book List -->
+    <!-- <div class="bigger-list">
+    <div class="book-list">
+            <img src="img/book.jpg" url="error">
+             <div style="margin-top: 15px;"></div>
+            <p>Rich Dad Poor Dad</p>
+            <a href="books/rich-dad-poor-dad.pdf" download="img/lady.jpg" class="button">View book cover</a>
+        </div>
+
+        <div class="book-list">
+            <img src="img/book.jpg" url="error">
+            <div style="margin-top: 15px;"></div>
+            <p>Rich Dad Poor Dad</p>
+            <a href="books/rich-dad-poor-dad.pdf" download="img/lady.jpg" class="button">View book cover</a>
+        </div>
+
+        <div class="book-list">
+            <img src="img/book.jpg" url="error">
+            <div style="margin-top: 15px;"></div>
+            <p>Rich Dad Poor Dad</p>
+            <a href="books/rich-dad-poor-dad.pdf" download="img/lady.jpg" class="button">View book cover</a>
+        </div>
+   </div>  -->
+    
+
+
+  <script src="script.js"></script>
 </body>
+
 </html>

@@ -1,9 +1,29 @@
 const hamburger = document.getElementById("hamburger");
 const sidebar = document.getElementById("sidebar");
 
-hamburger.addEventListener("click", () => {
-    sidebar.classList.toggle("active");
-});
+if (hamburger) {
+  // make keyboard-focusable and accessible
+  hamburger.tabIndex = 0;
+  hamburger.setAttribute('role', 'button');
+  hamburger.setAttribute('aria-expanded', 'false');
+}
+
+if (hamburger && sidebar) {
+  hamburger.addEventListener("click", () => {
+    const isActive = sidebar.classList.toggle("active");
+    // reflect state on the hamburger for animation
+    hamburger.classList.toggle('active', isActive);
+    hamburger.setAttribute('aria-expanded', String(isActive));
+  });
+
+  // support keyboard activation (Enter / Space)
+  hamburger.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      hamburger.click();
+    }
+  });
+}
 
 
 
@@ -232,4 +252,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
-
